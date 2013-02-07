@@ -1,0 +1,24 @@
+{
+  "name": "nid",
+  "version": "0.1.0",
+  "description": "Nice clean-mouthed random id generation, without any swearing!",
+  "main": "nid.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rjrodger/nid.git"
+  },
+  "keywords": [
+    "random",
+    "unique",
+    "id",
+    "identifier",
+    "generate",
+    "generator",
+    "generation",
+    "swear",
+    "curse"
+  ],
+  "author": "Richard Rodger (@rjrodger)",
+  "license": "MIT",
+  "files": ["README.md","LICENSE.txt","nid.js"]
+}
