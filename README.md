@@ -1,9 +1,10 @@
 # nid
 
-## Nice clean-mouthed random id generation, without any swearing!
+### Nice clean-mouthed random id generation, without any swearing!
 
 A Node.js module that generates random identifiers for public consumption. Swear words not included.
 
+### Support
 
 If you're using this module, feel free to contact me on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
 
@@ -12,14 +13,16 @@ Current Version: 0.1.0
 Tested on: node 0.8.16
 
 
+### What it Does
+
 This module is useful for custom short links, password generation and
 any sort of unique tag an end user might see. 
 
-By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided (thanks [@dshaw](http://twitter.com/dshaw)!).
+By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided
+(thanks [@dshaw](http://twitter.com/dshaw)!).
 
 
-
-Quick example:
+### Quick example
 
 ```JavaScript
 var nid = require('nid')
@@ -46,7 +49,7 @@ _nid_ function. A new, custom, function is returned. For example:
 var mynid = require('nid')({length:8})
 
 // generate an 8 character alphanumberic id, like: qnzvetvp
-console.log(nid())
+console.log( mynid() )
 ```
 
 You have the following options:
