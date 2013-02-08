@@ -8,7 +8,7 @@ A Node.js module that generates random identifiers for public consumption. Swear
 
 If you're using this module, feel free to contact me on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
 
-Current Version: 0.1.0
+Current Version: 0.3.0
 
 Tested on: node 0.8.16
 
@@ -28,7 +28,10 @@ By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_
 var nid = require('nid')
 
 // generate a 6 character alphanumberic id, like: ytnzt2
-console.log(nid())
+console.log( nid() )
+
+// generate a 3 character alphanumberic id, like: 5rg
+console.log( nid(3) )
 
 ```
 
@@ -38,6 +41,13 @@ console.log(nid())
 ```sh
 npm install nid
 ```
+
+
+## Length
+
+You can change the length of the identifier string by passing an
+integer to _nid_, as per the quick example above. The default
+alphanumeric alphabet is used.
 
 
 ## Options

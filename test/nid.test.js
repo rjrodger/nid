@@ -71,6 +71,9 @@ describe('happy', function(){
     var nid8 = nid(opts)
     var id = nid8()
     assert.ok( fmt_ok(opts)(id) )
+
+    id = nid(8)
+    assert.ok( fmt_ok(opts)(id) )
   })
 
 

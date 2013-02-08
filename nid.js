@@ -78,9 +78,9 @@ function generate(opts) {
   var cursed   = default_cursed
 
   if( opts ) {
-    length   = opts.length
-    alphabet = opts.alphabet
-    cursed   = cursing(opts.curses)
+    length   = opts.length || length
+    alphabet = opts.alphabet || alphabet
+    cursed   = opts.curses ? cursing(opts.curses) : cursed
   }
 
   var code = null, numchars = alphabet.length
@@ -121,8 +121,21 @@ function make(opts) {
 }
 
 
-function nid(opts) {
-  if( opts ) return make(opts);
+function nid() {
+  var arg0 = arguments[0]
+  if( arg0 ) {
+    var typestr = Object.prototype.toString.call( arg0 ).substring(8)
+    
+    if( "Number]"===typestr ) {
+      return generate({length:arg0})
+    }
+    else if( "Object]"===typestr ) {
+      return make(arg0)  
+    }
+    else return generate();
+  }
+
+
   return generate()
 }
 
