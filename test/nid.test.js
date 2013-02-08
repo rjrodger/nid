@@ -70,8 +70,6 @@ describe('happy', function(){
     var opts = {length:8}
     var nid8 = nid(opts)
     var id = nid8()
-    console.log(id)
-
     assert.ok( fmt_ok(opts)(id) )
   })
 
@@ -157,6 +155,13 @@ describe('happy', function(){
     var opts = {length:1,alphabet:'ab',curses:function(id){return 'a'===id}}
     var dur  = repeat(defruns,nid(opts),fmt_ok({length:1,alphabet:'a'}))
     report('options.curses.function',defruns,dur,opts)
+  })
+
+
+  it('options.curses.case',function(){
+    var opts = {length:1,alphabet:'aAbB',curses:'b'}
+    var dur  = repeat(defruns,nid(opts),fmt_ok({length:1,alphabet:'aA'}))
+    report('options.curses.case',defruns,dur,opts)
   })
 
 })

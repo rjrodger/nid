@@ -15,15 +15,7 @@ Tested on: node 0.8.16
 This module is useful for custom short links, password generation and
 any sort of unique tag an end user might see. 
 
-By default the following big ones are avoided:
-
-   * '\x66\x75\x63\x6B'
-   * '\x73\x68\x69\x74'
-   * '\x70\x69\x73\x73'
-   * '\x63\x75\x6E\x74'
-   * '\x6E\x69\x67\x67\x65\x72'
-
-Pull requests to "optimise" this list will not be accepted :)
+By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided (thanks [@dshaw](http://twitter.com/dshaw)!).
 
 
 
@@ -94,7 +86,7 @@ console.log(nid_noa()) // never includes an 'a' character
 
 Keep getting a random character from a given alphabet of characters,
 until you have enough to meet the length requirement. Then check if it
-contains a curse word. If so, try again.
+contains a curse word (case-insensitive). If so, try again.
 
 
 
