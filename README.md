@@ -103,3 +103,7 @@ contains a curse word (case-insensitive). If so, try again.
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rjrodger/nid/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
