@@ -8,9 +8,9 @@ A Node.js module that generates random identifiers for public consumption. Swear
 
 If you're using this module, feel free to contact me on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
 
-Current Version: 0.3.0
+Current Version: 0.3.1
 
-Tested on: node 0.8.16
+Tested on: node 0.10.24
 
 
 ### What it Does
