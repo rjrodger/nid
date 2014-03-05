@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git://github.com/rjrodger/nid.git"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*.test.js"
+  },
   "keywords": [
     "random",
     "unique",
@@ -20,5 +23,12 @@
   ],
   "author": "Richard Rodger (@rjrodger)",
   "license": "MIT",
-  "files": ["README.md","LICENSE.txt","nid.js"]
+  "files": [
+    "README.md",
+    "LICENSE.txt",
+    "nid.js"
+  ],
+  "devDependencies": {
+    "mocha": "~1.17.1"
+  }
 }
