@@ -16,10 +16,10 @@ Tested on: node 0.10.24
 ### What it Does
 
 This module is useful for custom short links, password generation and
-any sort of unique tag an end user might see. 
+any sort of unique tag an end user might see.
 
 By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided
-(thanks [@dshaw](http://twitter.com/dshaw)!).
+(thanks [@dshaw](http://twitter.com/dshaw)!). The [Battlestar Galactica version](http://en.battlestarwiki.org/wiki/Frak) of one of the big seven is also avoided.
 
 
 ### Quick example
