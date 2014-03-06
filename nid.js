@@ -24,7 +24,7 @@ var defaults = {
     length: 6,
     alphabet: '0123456789abcdefghijklmnopqrstuvwxyz',
 
-    // function hidecurse(s) {o='';for(i=0; i<s.length; i++){o+='\\x'+(s.charCodeAt(i).toString(16).toUpperCase())} return o; }
+    // function hidecurse(s) {o='';for(i=0; i<s.length; i++){o+='\\'+'x'+(s.charCodeAt(i).toString(16).toUpperCase())} console.log(o); }
     curses: [
         '\x66\x75\x63\x6B',
         '\x73\x68\x69\x74',
@@ -34,8 +34,8 @@ var defaults = {
         '\x6E\x69\x67\x67\x65\x72',
         '\x63\x6F\x63\x6B\x73\x75\x63\x6B\x65\x72',
         '\x6D\x6F\x74\x68\x65\x72\x66\x75\x63\x6B\x65\x72',
-        '\\x66\\x72\\x61\\x63\\x6B',
-        '\\x66\\x72\\x61\\x6B'
+        '\x66\x72\x61\x63\x6B',
+        '\x66\x72\x61\x6B'
     ],
 
 }

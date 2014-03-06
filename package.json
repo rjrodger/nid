@@ -1,6 +1,6 @@
 {
   "name": "nid",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Nice clean-mouthed random id generation, without any swearing!",
   "main": "nid.js",
   "repository": {
