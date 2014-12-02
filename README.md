@@ -12,6 +12,8 @@ Current Version: 0.3.2
 
 Tested on: node 0.10.24
 
+[![Build Status](https://travis-ci.org/rjrodger/nid.png?branch=master)](https://travis-ci.org/rjrodger/nid)
+
 
 ### What it Does
 
