@@ -105,7 +105,7 @@ var default_cursed = cursing(defaults.curses)
             }
             while (cursed(code))
 
-            return codech
+            return code
     }
 
 
