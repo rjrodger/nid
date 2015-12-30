@@ -8,7 +8,7 @@
     "url": "git://github.com/rjrodger/nid.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.test.js"
+    "test": "lab"
   },
   "keywords": [
     "random",
@@ -29,6 +29,7 @@
     "nid.js"
   ],
   "devDependencies": {
-    "mocha": "~1.17.1"
+    "code": "^1.5.0",
+    "lab": "^6.2.0"
   }
 }
