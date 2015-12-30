@@ -1,5 +1,10 @@
 # nid
 
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Dependency Status][david-badge]][david-url]
+
 ### Nice clean-mouthed random id generation, without any swearing!
 
 A Node.js module that generates random identifiers for public consumption. Swear words not included.
@@ -7,13 +12,6 @@ A Node.js module that generates random identifiers for public consumption. Swear
 ### Support
 
 If you're using this module, feel free to contact me on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
-
-Current Version: 0.3.2
-
-Tested on: node 0.10.24
-
-[![Build Status](https://travis-ci.org/rjrodger/nid.png?branch=master)](https://travis-ci.org/rjrodger/nid)
-
 
 ### What it Does
 
@@ -104,8 +102,11 @@ until you have enough to meet the length requirement. Then check if it
 contains a curse word (case-insensitive). If so, try again.
 
 
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rjrodger/nid/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+[npm-badge]: https://badge.fury.io/js/nid.svg
+[npm-url]: https://badge.fury.io/js/nid
+[travis-badge]: https://api.travis-ci.org/rjrodger/nid.svg
+[travis-url]: https://travis-ci.org/rjrodger/nid
+[coveralls-badge]:https://coveralls.io/repos/rjrodger/nid/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/rjrodger/nid?branch=master
+[david-badge]: https://david-dm.org/rjrodger/nid.svg
+[david-url]: https://david-dm.org/rjrodger/nid
