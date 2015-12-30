@@ -1,5 +1,18 @@
 language: node_js
+sudo: false
+
 node_js:
+  - "5"
+  - "4"
+  - "0.12"
   - "0.11"
   - "0.10"
-  - "0.8"
+
+services: mongodb
+
+cache:
+  directories:
+      - node_modules
+
+after_script:
+  npm run cov

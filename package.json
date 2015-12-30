@@ -29,6 +29,9 @@
     "LICENSE.txt",
     "nid.js"
   ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "devDependencies": {
     "code": "^1.5.0",
     "coveralls": "^2.11.6",
