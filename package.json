@@ -8,7 +8,12 @@
     "url": "git://github.com/rjrodger/nid.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.test.js"
+    "test": "./node_modules/.bin/mocha test/*.test.js",
+    "prettier": "prettier --write --no-semi --single-quote *.js lib/*.js test/*.js",
+    "clean": "rm -rf node_modules yarn.lock package-lock.json",
+    "reset": "npm run clean && npm i && npm test",
+    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"` && echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags",
+    "repo-publish": "npm run reset && npm run repo-tag && npm run prettier && npm test && npm publish --registry https://registry.npmjs.org"
   },
   "keywords": [
     "random",
@@ -29,6 +34,7 @@
     "nid.js"
   ],
   "devDependencies": {
-    "mocha": "~1.17.1"
+    "mocha": "^7.0.1",
+    "prettier": "^1.19.1"
   }
 }
