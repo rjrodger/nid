@@ -7,7 +7,7 @@
  * nid({options}) // returns new nid function that generates ids using options
  *
  * options are:
- *   length: number of chars in id
+ *   len: number of chars in id
  *   alphabet: alphabet to take chars from randomly
  *   hex, HEX: alphabet is hexadecimal, lower or upper case respectively (overrides alphabet)
  *   exclude,curses: (exlude overrides)
@@ -19,7 +19,7 @@
  */
 
 var defaults = {
-  length: 6,
+  len: 6,
   alphabet: '0123456789abcdefghijklmnopqrstuvwxyz',
 
   // function hidecurse(s) {o='';for(i=0; i<s.length; i++){o+='\\'+'x'+(s.charCodeAt(i).toString(16).toUpperCase())} console.log(o); }
@@ -39,7 +39,7 @@ var defaults = {
     '\x77\x68\x6F\x72\x65',
     '\x63\x6F\x63\x6B',
     '\x74\x77\x61\x74',
-    '\x77\x74\x6E\x6B',
+    '\x77\x61\x6E\x6B',
     '\x73\x6C\x75\x74'
   ]
 }
@@ -77,12 +77,12 @@ function cursing(curses) {
 }
 
 function generate(opts) {
-  var length = defaults.length
+  var len = defaults.len
   var alphabet = defaults.alphabet
   var cursed = default_cursed
 
   if (opts) {
-    length = opts.length || length
+    len = opts.length || opts.len || len
     alphabet = opts.alphabet || alphabet
     cursed = opts.curses ? cursing(opts.curses) : cursed
   }
@@ -93,7 +93,7 @@ function generate(opts) {
   do {
     var time = new Date().getTime()
     var sb = []
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i < len; i++) {
       var c = Math.floor((time * Math.random()) % numchars)
       sb.push(alphabet[c])
     }
@@ -104,7 +104,9 @@ function generate(opts) {
 }
 
 function make(opts) {
-  ;['length', 'alphabet', 'curses'].forEach(function(setting) {
+  opts.len = opts.len || opts.length
+  
+  ;['len', 'alphabet', 'curses'].forEach(function(setting) {
     opts[setting] = void 0 === opts[setting] ? defaults[setting] : opts[setting]
   })
 
@@ -121,7 +123,11 @@ function make(opts) {
     return generate(opts)
   }
 
-  nid.curses = opts.curses
+  var curses = opts.curses
+  delete opts.curses
+  nid.curses = ()=>curses
+  nid.len = opts.len
+  nid.alphabet = opts.alphabet
   
   return nid
 }
@@ -133,7 +139,7 @@ function nid() {
 
     if ('Number]' === typestr) {
       return generate({
-        length: arg0
+        len: arg0
       })
     } else if ('Object]' === typestr) {
       return make(arg0)
@@ -143,7 +149,8 @@ function nid() {
   return generate()
 }
 
-nid.__defaults = defaults
-nid.curses = defaults.curses
+nid.curses = ()=>defaults.curses
+nid.len = defaults.len
+nid.alphabet = defaults.alphabet
 
 module.exports = nid

@@ -63,15 +63,15 @@ describe('happy', function() {
   it('works', function() {
     var id = nid()
     assert.ok(def_id_fmt_ok(id))
-    assert.ok(nid.curses.length>0)
+    assert.ok(nid.curses().length > 0)
   })
 
   it('basic', function() {
     var dur = repeat(defruns, nid, def_id_fmt_ok)
-    report('basic', defruns, dur, nid.__defaults)
+    report('basic', defruns, dur, nid)
   })
 
-  it('options.length', function() {
+  it('options.len', function() {
     var opts = { length: 8 }
     var nid8 = nid(opts)
     var id = nid8()
@@ -80,7 +80,13 @@ describe('happy', function() {
     id = nid(8)
     assert.ok(fmt_ok(opts)(id))
 
-    assert.ok(nid8.curses.length>0)
+    assert.ok(nid8.curses().length > 0)
+
+    var opts1 = { len: 8 }
+    var nid8a = nid(opts)
+    var ida = nid8a()
+    assert.ok(fmt_ok(opts)(ida))
+
   })
 
   it('options.uuid-ish', function() {
