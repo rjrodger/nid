@@ -1,11 +1,17 @@
-/* Copyright (c) 2013 Richard Rodger, MIT License */
+/* Copyright (c) 2013-2020 Richard Rodger, MIT License */
 'use strict'
 
-// mocha nid.test.js to test
+var Lab = require('@hapi/lab')
+Lab = null != Lab.script ? Lab : require('./hapi-lab-shim')
+
+var Code = require('@hapi/code')
+
+var lab = (exports.lab = Lab.script())
+var describe = lab.describe
+var it = lab.it
+var expect = Code.expect
 
 var nid = require('..')
-
-var assert = require('assert')
 
 var defruns = 100000
 
@@ -21,7 +27,7 @@ function fmt_ok(opts) {
   }
 
   var re = '^[' + opts.alphabet + ']+$'
-  return function(id) {
+  return function (id) {
     return id.length === (opts.length || 6) && id.match(re)
   }
 }
@@ -35,7 +41,7 @@ function repeat(runs, nidf, passf) {
   var end = new Date().getTime()
 
   if (passf) {
-    for (var i = 0; i < runs; i++) {
+    for (i = 0; i < runs; i++) {
       passf(nids[i])
     }
   }
@@ -59,115 +65,111 @@ function report(name, runs, dur, opts) {
   )
 }
 
-describe('happy', function() {
-  it('works', function() {
+describe('happy', function () {
+  it('works', function () {
     var id = nid()
-    assert.ok(def_id_fmt_ok(id))
-    assert.ok(nid.curses().length > 0)
+    expect(def_id_fmt_ok(id))
   })
 
-  it('basic', function() {
+  it('basic', function () {
     var dur = repeat(defruns, nid, def_id_fmt_ok)
     report('basic', defruns, dur, nid)
   })
 
-  it('options.len', function() {
+  it('options.len', function () {
     var opts = { length: 8 }
     var nid8 = nid(opts)
     var id = nid8()
-    assert.ok(fmt_ok(opts)(id))
+    expect(fmt_ok(opts)(id))
 
     id = nid(8)
-    assert.ok(fmt_ok(opts)(id))
+    expect(fmt_ok(opts)(id))
 
-    assert.ok(nid8.curses().length > 0)
-
-    var opts1 = { len: 8 }
+    // var opts1 = { len: 8 }
     var nid8a = nid(opts)
     var ida = nid8a()
-    assert.ok(fmt_ok(opts)(ida))
-
+    expect(fmt_ok(opts)(ida))
   })
 
-  it('options.uuid-ish', function() {
+  it('options.uuid-ish', function () {
     var opts = { length: 32, hex: true, curses: false }
     var dur = repeat(defruns, nid(opts), fmt_ok(opts))
     report('options.uuid-ish', defruns, dur, opts)
   })
 
-  it('options.alphabet.a', function() {
+  it('options.alphabet.a', function () {
     var opts = { length: 1, alphabet: 'a' }
     var dur = repeat(defruns, nid(opts), fmt_ok(opts))
     report('options.alphabet.a', defruns, dur, opts)
   })
 
-  it('options.alphabet.ab', function() {
+  it('options.alphabet.ab', function () {
     var opts = { length: 1, alphabet: 'ab' }
     var dur = repeat(defruns, nid(opts), fmt_ok(opts))
     report('options.alphabet.ab', defruns, dur, opts)
   })
 
-  it('options.hex', function() {
+  it('options.hex', function () {
     var opts = { length: 1, hex: 1 }
     var dur = repeat(defruns, nid(opts), fmt_ok(opts))
     report('options.hex', defruns, dur, opts)
   })
 
-  it('options.HEX', function() {
+  it('options.HEX', function () {
     var opts = { length: 1, HEX: 1 }
     var dur = repeat(defruns, nid(opts), fmt_ok(opts))
     report('options.HEX', defruns, dur, opts)
   })
 
-  it('options.curses.array.one', function() {
+  it('options.curses.array.one', function () {
     var opts = { length: 1, alphabet: 'ab', curses: ['b'] }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'a' }))
     report('options.curses.array.one', defruns, dur, opts)
   })
 
-  it('options.exclude.array.one', function() {
+  it('options.exclude.array.one', function () {
     var opts = { length: 1, alphabet: 'ab', exclude: ['b'] }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'a' }))
     report('options.curses.array.one', defruns, dur, opts)
   })
 
-  it('options.curses.array.many', function() {
+  it('options.curses.array.many', function () {
     var opts = { length: 1, alphabet: 'abcd', curses: ['b', 'c'] }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'ad' }))
     report('options.curses.array.many', defruns, dur, opts)
   })
 
-  it('options.curses.csv.one', function() {
+  it('options.curses.csv.one', function () {
     var opts = { length: 1, alphabet: 'ab', curses: 'b' }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'a' }))
     report('options.curses.csv.one', defruns, dur, opts)
   })
 
-  it('options.curses.csv.many', function() {
+  it('options.curses.csv.many', function () {
     var opts = { length: 1, alphabet: 'abcd', curses: 'b,c' }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'ad' }))
     report('options.curses.csv.many', defruns, dur, opts)
   })
 
-  it('options.curses.re', function() {
+  it('options.curses.re', function () {
     var opts = { length: 1, alphabet: 'ab', curses: /b/ }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'a' }))
     report('options.curses.re', defruns, dur, opts)
   })
 
-  it('options.curses.function', function() {
+  it('options.curses.function', function () {
     var opts = {
       length: 1,
       alphabet: 'ab',
-      curses: function(id) {
+      curses: function (id) {
         return 'a' === id
-      }
+      },
     }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'a' }))
     report('options.curses.function', defruns, dur, opts)
   })
 
-  it('options.curses.case', function() {
+  it('options.curses.case', function () {
     var opts = { length: 1, alphabet: 'aAbB', curses: 'b' }
     var dur = repeat(defruns, nid(opts), fmt_ok({ length: 1, alphabet: 'aA' }))
     report('options.curses.case', defruns, dur, opts)

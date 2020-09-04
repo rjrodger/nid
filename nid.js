@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Richard Rodger, MIT License */
+/* Copyright (c) 2013-2020 Richard Rodger, MIT License */
 'use strict'
 
 /* Module API:
@@ -18,35 +18,35 @@
  *
  */
 
+var dc = (y, t) => y.map((x) => x.map((n) => String.fromCharCode(n)).join(''))
+var cl = [
+  [0x66, 0x75, 0x63, 0x6b],
+  [0x73, 0x68, 0x69, 0x74],
+  [0x70, 0x69, 0x73, 0x73],
+  [0x63, 0x75, 0x6e, 0x74],
+  [0x74, 0x69, 0x74, 0x73],
+  [0x6e, 0x69, 0x67, 0x67, 0x65, 0x72],
+  [0x6e, 0x69, 0x67, 0x67, 0x61],
+  [0x63, 0x6f, 0x63, 0x6b, 0x73, 0x75, 0x63, 0x6b, 0x65, 0x72],
+  [0x6d, 0x6f, 0x74, 0x68, 0x65, 0x72, 0x66, 0x75, 0x63, 0x6b, 0x65, 0x72],
+  [0x66, 0x72, 0x61, 0x63, 0x6b],
+  [0x66, 0x72, 0x61, 0x6b],
+  [0x62, 0x69, 0x74, 0x63, 0x68],
+  [0x61, 0x73, 0x73, 0x68, 0x6f, 0x6c, 0x65],
+  [0x77, 0x68, 0x6f, 0x72, 0x65],
+  [0x63, 0x6f, 0x63, 0x6b],
+  [0x74, 0x77, 0x61, 0x74],
+  [0x77, 0x61, 0x6e, 0x6b],
+  [0x73, 0x6c, 0x75, 0x74],
+  [0x70, 0x75, 0x73, 0x73, 0x79],
+]
+
 var defaults = {
   len: 6,
   alphabet: '0123456789abcdefghijklmnopqrstuvwxyz',
-
-  // function hidecurse(s) {o='';for(i=0; i<s.length; i++){o+='\\'+'x'+(s.charCodeAt(i).toString(16).toUpperCase())} console.log(o); }
-  curses: [
-    '\x66\x75\x63\x6B',
-    '\x73\x68\x69\x74',
-    '\x70\x69\x73\x73',
-    '\x63\x75\x6E\x74',
-    '\x74\x69\x74\x73',
-    '\x6E\x69\x67\x67\x65\x72',
-    '\x6E\x69\x67\x67\x61',
-    '\x63\x6F\x63\x6B\x73\x75\x63\x6B\x65\x72',
-    '\x6D\x6F\x74\x68\x65\x72\x66\x75\x63\x6B\x65\x72',
-    '\x66\x72\x61\x63\x6B',
-    '\x66\x72\x61\x6B',
-    '\x62\x69\x74\x63\x68',
-    '\x61\x73\x73\x68\x6F\x6C\x65',
-    '\x77\x68\x6F\x72\x65',
-    '\x63\x6F\x63\x6B',
-    '\x74\x77\x61\x74',
-    '\x77\x61\x6E\x6B',
-    '\x73\x6C\x75\x74',
-    '\x70\x75\x73\x73\x79'
-  ]
 }
 
-var default_cursed = cursing(defaults.curses)
+var default_cursed = null
 
 function cursing(curses) {
   var typestr = Object.prototype.toString.call(curses).substring(8)
@@ -56,7 +56,7 @@ function cursing(curses) {
   }
 
   if (Array.isArray(curses)) {
-    return function(code) {
+    return function (code) {
       var codelower = code.toLowerCase()
       for (var i = 0; i < curses.length; i++) {
         if (-1 != codelower.indexOf(curses[i])) {
@@ -68,11 +68,11 @@ function cursing(curses) {
     if ('Function]' == typestr) {
       return curses
     } else if ('RegExp]' == typestr) {
-      return function(code) {
+      return function (code) {
         return !!code.match(curses)
       }
     } else
-      return function() {
+      return function () {
         return false
       }
   }
@@ -81,6 +81,12 @@ function cursing(curses) {
 function generate(opts) {
   var len = defaults.len
   var alphabet = defaults.alphabet
+
+  if (null == default_cursed) {
+    var dcl = dc(cl, Date.now())
+    default_cursed = cursing(dcl)
+  }
+
   var cursed = default_cursed
 
   if (opts) {
@@ -107,8 +113,7 @@ function generate(opts) {
 
 function make(opts) {
   opts.len = opts.len || opts.length
-  
-  ;['len', 'alphabet', 'curses'].forEach(function(setting) {
+  ;['len', 'alphabet', 'curses'].forEach(function (setting) {
     opts[setting] = void 0 === opts[setting] ? defaults[setting] : opts[setting]
   })
 
@@ -127,10 +132,10 @@ function make(opts) {
 
   var curses = opts.curses
   delete opts.curses
-  nid.curses = ()=>curses
+  nid.curses = () => curses
   nid.len = opts.len
   nid.alphabet = opts.alphabet
-  
+
   return nid
 }
 
@@ -141,7 +146,7 @@ function nid() {
 
     if ('Number]' === typestr) {
       return generate({
-        len: arg0
+        len: arg0,
       })
     } else if ('Object]' === typestr) {
       return make(arg0)
@@ -151,7 +156,7 @@ function nid() {
   return generate()
 }
 
-nid.curses = ()=>defaults.curses
+nid.curses = () => defaults.curses
 nid.len = defaults.len
 nid.alphabet = defaults.alphabet
 

@@ -1,19 +1,23 @@
 {
   "name": "nid",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Nice clean-mouthed random id generation, without any swearing!",
   "main": "nid.js",
+  "browser": "dist/nid.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/rjrodger/nid.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.test.js",
-    "prettier": "prettier --write --no-semi --single-quote *.js lib/*.js test/*.js",
+    "test": "lab -v -L -P test -t 80 -I document -r console -o stdout -r html -o test/coverage.html",
+    "test-web": "browserify -o test-web/test-web.js -e test/nid.test.js -s Nid -im -i assert -i @hapi/lab && open test-web/index.html",
+    "build": "cp nid.js dist/nid.min.js && browserify -o dist/nid.min.js -e nid.js -s Nid -im -i assert -p tinyify",
+    "coveralls": "lab -s -P test -r lcov | coveralls",
+    "prettier": "prettier --write --no-semi --single-quote nid.js test/*.js",
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm test",
-    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"` && echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags",
-    "repo-publish": "npm run reset && npm run repo-tag && npm run prettier && npm test && npm publish --registry https://registry.npmjs.org"
+    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"`; echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",
+    "repo-publish": "npm run clean && npm i && npm run prettier && npm build && npm test && npm run test-web && npm run repo-tag && npm publish --registry http://registry.npmjs.org"
   },
   "keywords": [
     "random",
@@ -31,10 +35,15 @@
   "files": [
     "README.md",
     "LICENSE.txt",
-    "nid.js"
+    "nid.js",
+    "dist/nid.min.js"
   ],
   "devDependencies": {
-    "mocha": "^7.0.1",
-    "prettier": "^1.19.1"
+    "@hapi/code": "^8.0.2",
+    "@hapi/lab": "^23.0.0",
+    "browserify": "^16.5.2",
+    "coveralls": "^3.1.0",
+    "prettier": "^2.1.1",
+    "tinyify": "^3.0.0"
   }
 }
