@@ -132,7 +132,7 @@ function make(opts) {
 
   var curses = opts.curses
   delete opts.curses
-  nid.curses = () => curses
+  nid.curses = () => curses || default_cursed
   nid.len = opts.len
   nid.alphabet = opts.alphabet
 

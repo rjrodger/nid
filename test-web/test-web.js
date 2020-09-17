@@ -5140,6 +5140,8 @@ describe('happy', function () {
   it('works', function () {
     var id = nid()
     expect(def_id_fmt_ok(id))
+
+    expect(Array.isArray(nid.curses))
   })
 
   it('basic', function () {
