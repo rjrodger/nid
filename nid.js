@@ -130,6 +130,9 @@ function make(opts) {
     return generate(opts)
   }
 
+  // ensure default_cursed is generated
+  nid()
+
   var curses = opts.curses
   delete opts.curses
   nid.curses = () => curses || default_cursed
