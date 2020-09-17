@@ -67,10 +67,11 @@ function report(name, runs, dur, opts) {
 
 describe('happy', function () {
   it('works', function () {
+    var default_cursed_list = nid.curses()
+    expect(Array.isArray(default_cursed_list))
+
     var id = nid()
     expect(def_id_fmt_ok(id))
-
-    expect(Array.isArray(nid.curses))
   })
 
   it('basic', function () {

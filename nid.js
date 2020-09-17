@@ -47,6 +47,7 @@ var defaults = {
 }
 
 var default_cursed = null
+var default_cursed_list = null
 
 function cursing(curses) {
   var typestr = Object.prototype.toString.call(curses).substring(8)
@@ -83,8 +84,8 @@ function generate(opts) {
   var alphabet = defaults.alphabet
 
   if (null == default_cursed) {
-    var dcl = dc(cl, Date.now())
-    default_cursed = cursing(dcl)
+    default_cursed_list = dc(cl, Date.now())
+    default_cursed = cursing(default_cursed_list)
   }
 
   var cursed = default_cursed
@@ -130,9 +131,6 @@ function make(opts) {
     return generate(opts)
   }
 
-  // ensure default_cursed is generated
-  nid()
-
   var curses = opts.curses
   delete opts.curses
   nid.curses = () => curses || default_cursed
@@ -159,7 +157,10 @@ function nid() {
   return generate()
 }
 
-nid.curses = () => defaults.curses
+// ensure default_cursed_list is generated
+nid()
+
+nid.curses = () => default_cursed_list
 nid.len = defaults.len
 nid.alphabet = defaults.alphabet
 
