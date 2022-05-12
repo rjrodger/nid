@@ -4,15 +4,16 @@
 
 A Node.js module that generates random identifiers for public consumption. Swear words not included.
 
-### Support
+[![npm version](https://img.shields.io/npm/v/nid.svg)](https://npmjs.com/package/nid)
+[![build](https://github.com/rjrodger/nid/actions/workflows/build.yml/badge.svg)](https://github.com/rjrodger/nid/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/rjrodger/nid/badge.svg?branch=main)](https://coveralls.io/github/rjrodger/nid?branch=main)
+[![Known Vulnerabilities](https://snyk.io/test/github/rjrodger/nid/badge.svg)](https://snyk.io/test/github/rjrodger/nid)
+[![DeepScan grade](https://deepscan.io/api/teams/5016/projects/19509/branches/508695/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=19509&bid=508695)
+[![Maintainability](https://api.codeclimate.com/v1/badges/de19e425771fb65e98e2/maintainability)](https://codeclimate.com/github/rjrodger/nid/maintainability)
 
-If you're using this module, feel free to contact me on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
+| ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
+|---|---|
 
-Current Version: 0.3.2
-
-Tested on: node 0.10.24
-
-[![Build Status](https://travis-ci.org/rjrodger/nid.png?branch=master)](https://travis-ci.org/rjrodger/nid)
 
 
 ### What it Does
