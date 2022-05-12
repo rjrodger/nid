@@ -24,6 +24,8 @@ any sort of unique tag an end user might see.
 By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided
 (thanks [@dshaw](http://twitter.com/dshaw)!). The [Battlestar Galactica version](http://en.battlestarwiki.org/wiki/Frak) of one of the big seven is also avoided.
 
+NOTE: this module is *not* cryptographically secure and should only be used in low-risk enviroments.
+
 
 ### Quick example
 
@@ -104,9 +106,4 @@ Keep getting a random character from a given alphabet of characters,
 until you have enough to meet the length requirement. Then check if it
 contains a curse word (case-insensitive). If so, try again.
 
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rjrodger/nid/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
