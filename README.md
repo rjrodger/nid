@@ -24,7 +24,7 @@ any sort of unique tag an end user might see.
 By default the [big seven curse words](http://en.wikipedia.org/wiki/Seven_dirty_words) are avoided
 (thanks [@dshaw](http://twitter.com/dshaw)!). The [Battlestar Galactica version](http://en.battlestarwiki.org/wiki/Frak) of one of the big seven is also avoided.
 
-NOTE: this module is *not* cryptographically secure and should only be used in low-risk enviroments.
+NOTE: this module is *not* cryptographically secure and should only be used in low-risk environments.
 
 
 ### Quick example
