@@ -1,0 +1,14 @@
+<script src="../nid.min.js"></script>
+<script>
+  NIDRUN = false
+  function NIDDING() {
+    if(NIDRUN) {
+      Nid()
+      setTimeout(()=>NIDDING())
+    }
+  }
+  function NIDSTART() {
+    NIDRUN = true
+    NIDDING()
+  }
+</script>

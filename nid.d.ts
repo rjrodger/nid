@@ -1,7 +1,9 @@
-declare function nid(arg0?: any): any;
-declare namespace nid {
+declare function Nid(spec?: number | object): any;
+declare namespace Nid {
     var curses: () => any;
-    var len: number;
-    var alphabet: string;
+    var len: number | undefined;
+    var alphabet: string | undefined;
 }
-export default nid;
+declare type Nid = typeof Nid;
+export type { Nid };
+export default Nid;
