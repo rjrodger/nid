@@ -29,6 +29,9 @@ type NidOpts = {
   length?: number // legacy
   alphabet?: string
   curses?: CurseSpec
+  exclude?: CurseSpec
+  hex?: boolean
+  HEX?: boolean
 }
 
 const defaults: NidOpts = {
@@ -102,11 +105,12 @@ function generate(opts?: NidOpts) {
   return code
 }
 
-function make(opts: any) {
+function make(opts: NidOpts) {
   opts.len = opts.len || opts.length
     ;['len', 'alphabet', 'curses'].forEach(function(setting) {
-      opts[setting] =
-        void 0 === opts[setting] ? (defaults as any)[setting] : opts[setting]
+      (opts as any)[setting] =
+        void 0 === (opts as any)[setting] ?
+          (defaults as any)[setting] : (opts as any)[setting]
     })
 
   if (opts.hex) {
@@ -123,7 +127,6 @@ function make(opts: any) {
   }
 
   const curses = opts.curses
-  delete opts.curses
   nid.curses = () => curses || default_cursed
   nid.len = opts.len
   nid.alphabet = opts.alphabet

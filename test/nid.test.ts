@@ -70,6 +70,23 @@ describe('happy', function() {
     report('basic', defruns, dur, Nid)
   })
 
+
+  test('curses-spec', function() {
+    let n0 = Nid({ len: 1, alphabet: 'abc', curses: 'a,b' })
+    expect(n0()).toEqual('c')
+
+    let n1 = Nid({ len: 1, alphabet: 'abc', curses: /[ab]/ })
+    expect(n1()).toEqual('c')
+
+    let n2 = Nid({
+      len: 1, alphabet: 'abc',
+      curses: (code: string) => code.match(/[ab]/)
+    })
+    expect(n2()).toEqual('c')
+  })
+
+
+
   test('options.len', function() {
     let opts = { length: 8 }
     let nid8: Nid = Nid(opts)

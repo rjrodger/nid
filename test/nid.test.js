@@ -59,6 +59,17 @@ describe('happy', function () {
         let dur = repeat(defruns, nid_1.default, def_id_fmt_ok);
         report('basic', defruns, dur, nid_1.default);
     });
+    test('curses-spec', function () {
+        let n0 = (0, nid_1.default)({ len: 1, alphabet: 'abc', curses: 'a,b' });
+        expect(n0()).toEqual('c');
+        let n1 = (0, nid_1.default)({ len: 1, alphabet: 'abc', curses: /[ab]/ });
+        expect(n1()).toEqual('c');
+        let n2 = (0, nid_1.default)({
+            len: 1, alphabet: 'abc',
+            curses: (code) => code.match(/[ab]/)
+        });
+        expect(n2()).toEqual('c');
+    });
     test('options.len', function () {
         let opts = { length: 8 };
         let nid8 = (0, nid_1.default)(opts);

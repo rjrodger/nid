@@ -80,7 +80,8 @@ function make(opts) {
     opts.len = opts.len || opts.length;
     ['len', 'alphabet', 'curses'].forEach(function (setting) {
         opts[setting] =
-            void 0 === opts[setting] ? defaults[setting] : opts[setting];
+            void 0 === opts[setting] ?
+                defaults[setting] : opts[setting];
     });
     if (opts.hex) {
         opts.alphabet = '0123456789abcdef';
@@ -94,7 +95,6 @@ function make(opts) {
         return generate(opts);
     };
     const curses = opts.curses;
-    delete opts.curses;
     nid.curses = () => curses || default_cursed;
     nid.len = opts.len;
     nid.alphabet = opts.alphabet;
