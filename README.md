@@ -8,8 +8,8 @@ A Node.js module that generates random identifiers for public consumption. Swear
 [![build](https://github.com/rjrodger/nid/actions/workflows/build.yml/badge.svg)](https://github.com/rjrodger/nid/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/rjrodger/nid/badge.svg?branch=main)](https://coveralls.io/github/rjrodger/nid?branch=main)
 [![Known Vulnerabilities](https://snyk.io/test/github/rjrodger/nid/badge.svg)](https://snyk.io/test/github/rjrodger/nid)
-[![DeepScan grade](https://deepscan.io/api/teams/5016/projects/19509/branches/508695/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=19509&bid=508695)
-[![Maintainability](https://api.codeclimate.com/v1/badges/de19e425771fb65e98e2/maintainability)](https://codeclimate.com/github/rjrodger/nid/maintainability)
+[![DeepScan grade](https://deepscan.io/api/teams/5016/projects/21043/branches/592913/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=21043&bid=592913)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7334f15641ad06bfc86d/maintainability)](https://codeclimate.com/github/rjrodger/nid/maintainability)
 
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 |---|---|
