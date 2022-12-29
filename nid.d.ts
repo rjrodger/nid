@@ -4,6 +4,6 @@ declare namespace Nid {
     var len: number | undefined;
     var alphabet: string | undefined;
 }
-declare type Nid = typeof Nid;
+type Nid = typeof Nid;
 export type { Nid };
 export default Nid;
